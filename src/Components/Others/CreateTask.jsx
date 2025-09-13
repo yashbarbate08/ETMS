@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
+import { getLocalStorage } from "../../Utils/LocalStorage";
 
 const CreateTask = () => {
   const [userData, setUserData] = useContext(AuthContext);
@@ -12,6 +13,11 @@ const CreateTask = () => {
   const [AssignTo, setAssignTo] = useState("");
 
   const [Task, setTask] = useState({});
+  // Get data from localStorage
+  const { Employees } = getLocalStorage();
+
+  // Extract only first names
+  const employeeNames = Employees.map((emp) => emp.firstName);
 
   const SubmitHandler = (e) => {
     e.preventDefault();
@@ -80,7 +86,7 @@ const CreateTask = () => {
               </div>
               <div className="flex flex-col mb-5">
                 <label htmlFor="Assign">Assign to</label>
-                <input
+                {/* <input
                   value={AssignTo}
                   onChange={(e) => {
                     setAssignTo(e.target.value);
@@ -88,7 +94,20 @@ const CreateTask = () => {
                   type="text"
                   className="border-2 mt-1 border-zinc-500 rounded-md px-2 py-1 "
                   placeholder="Employee Name"
-                />
+                /> */}
+
+                <select
+                  value={AssignTo}
+                  onChange={(e) => setAssignTo(e.target.value)}
+                  className="border-2 mt-1 border-zinc-500 rounded-md px-2 py-1"
+                >
+                  <option value="">Select Employee</option>
+                  {employeeNames.map((name, idx) => (
+                    <option key={idx} value={name}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="flex flex-col mb-5">
                 <label htmlFor="Category">Category</label>

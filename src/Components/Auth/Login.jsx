@@ -16,6 +16,9 @@ export default function Login({ HandleLogin }) {
     <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-gray-800 rounded-lg shadow-xl p-8">
+          <p className="text-white" > admin: admin@me.com </p>
+          <p className="text-white" >password : 123</p>
+
           <h2 className="text-2xl font-bold text-white text-center mb-8">
             Sign In
           </h2>

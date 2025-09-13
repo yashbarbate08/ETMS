@@ -1,12 +1,9 @@
 import React from "react";
 import AcceptTask from "./AcceptTask";
 
-const NewTask = ({ data }) => {
-
-
-
+const NewTask = ({ data, onAccept }) => {
   const acceptIt = () => {
-    console.log('task accepted')
+    onAccept(data.id); // Pass task ID to parent
   };
 
   return (
