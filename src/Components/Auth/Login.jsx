@@ -13,17 +13,53 @@ export default function Login({ HandleLogin }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-900 flex flex-col md:flex-row items-center justify-center p-6 gap-10">
+      {/* Info Panel */}
+      <div className="bg-gray-800 text-white rounded-lg shadow-lg p-6 w-full max-w-md">
+        <h2 className="text-xl font-bold mb-4 text-center">Login Details</h2>
+
+        {/* Admin Info */}
+        <div className="mb-6">
+          <h3 className="font-semibold mb-2">Admin:</h3>
+          <p>
+            Email: <span className="font-medium">admin@me.com</span>
+          </p>
+          <p className="text-green-600">
+            Password: <span className="font-medium">123</span>
+          </p>
+        </div>
+
+        {/* Employee Info */}
+        <div>
+          <h3 className="font-semibold mb-2">Sample Employee Logins:</h3>
+          <ul className="list-disc list-inside space-y-1">
+            <li>
+              Email: <span className="font-medium">rahul@me.com</span>{" "}
+            </li>
+            <li>
+              Email: <span className="font-medium">amit@me.com</span>{" "}
+            </li>
+            <li>
+              Email: <span className="font-medium">kavita@me.com</span>{" "}
+            </li>
+            <li>
+              Email: <span className="font-medium">sachin@me.com</span>{" "}
+            </li>
+            <li className="text-green-600">
+              Password: <span className="font-medium ">123</span>{" "}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Login Form */}
       <div className="w-full max-w-md">
         <div className="bg-gray-800 rounded-lg shadow-xl p-8">
-          <p className="text-white" > admin: admin@me.com </p>
-          <p className="text-white" >password : 123</p>
-
           <h2 className="text-2xl font-bold text-white text-center mb-8">
             Sign In
           </h2>
 
-          <div className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -36,8 +72,8 @@ export default function Login({ HandleLogin }) {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Enter your email"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
 
@@ -53,18 +89,18 @@ export default function Login({ HandleLogin }) {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Enter your password"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
 
             <button
-              onClick={handleSubmit}
+              type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800"
             >
               Login
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
